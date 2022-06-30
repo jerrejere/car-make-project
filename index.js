@@ -14,3 +14,28 @@ axios.request(options).then(function (response) {
 }).catch(function (error) {
 	console.error(error);
 });
+
+
+
+let vehicles = async () =>
+{
+    let response = await fetch(
+      "https://car-data.p.rapidapi.com/cars/types'",
+      
+      options
+    );
+    let cars = await response.json()
+    console.log( cars );
+
+    let dataCount = document.getElementById( "fetched" );
+      
+    cars.map( ( car ) =>
+    {
+        let row = `<li> ${ car.make }: ${ car.model }</li>`;
+        dataCount.innerHTML+=row
+   ;
+    });
+   
+}
+vehicles()
+
